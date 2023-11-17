@@ -1,0 +1,64 @@
+// /**FORMULARIO DE CONTACTO**/
+// .contact h2{
+//     color: $plata;
+//     text-transform: uppercase;
+// }
+// .contacto{
+//     background-color: $plata;
+//     width: min(60rem, 100%);
+//     margin: 0 auto;
+//     padding: 2rem;
+//     border-radius: 1rem;
+// }
+// .contacto fieldset{
+//     border: none;
+// }
+// .contacto legend{
+//     color: $blaze1;
+//     text-align: center;
+//     font-size: 1.8rem;
+//     text-transform: uppercase;
+//     font-weight: bold;
+//     margin-bottom: 2rem;    
+// }
+// @include tablet {
+//     .contenedor-campos{
+//         display: grid;
+//         grid-template-columns: repeat(2, 1fr);
+//         grid-template-rows: auto auto 20rem;
+//         column-gap: 1rem;
+//     }
+// }
+// // @Media (min-width: 768px) {
+// //     .contenedor-campos{
+// //         display: grid;
+// //         grid-template-columns: repeat(2, 1fr);
+// //         grid-template-rows: auto auto 20rem;
+// //         column-gap: 1rem;
+// //     }
+// // }
+// .campos:nth-child(3){
+//     grid-column: 1/3;
+// }
+// .campos:nth-child(4){
+//     grid-column: 1/3;
+// }
+// .campos{
+//     margin-bottom: 1rem;
+// }
+// .campos label{
+//     color: $blaze1;
+//     font-weight: $bold;
+//     margin-bottom: 1.5rem;
+//     display: block;
+// }
+// .input-text{
+//     width: 100%;
+//     border: none;
+//     padding: 1.5rem;
+//     border-radius: 0.5rem;
+// }
+// .campos textarea{
+//     height: 15rem;
+// }
+// /**FORMULARIO DE CONTACTO**/
