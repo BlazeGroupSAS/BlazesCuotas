@@ -92,7 +92,7 @@ function calculardiarias(){
 
         const botonEnviar = document.querySelector('.whatsapp');
         botonEnviar.addEventListener('click', ()=>{
-            window.open('whatsapp://' + mensaje, '_blank');
+            window.open('https://api.whatsapp.com/' + mensaje, '_blank');
         });
     }
 };
@@ -183,7 +183,7 @@ function calcularsemanales(){
 
         const botonEnviar = document.querySelector('.whatsapp');
         botonEnviar.addEventListener('click', ()=>{
-            window.open('whatsapp://' + mensaje, '_blank');
+            window.open('https://api.whatsapp.com/' + mensaje, '_blank');
         });
     }
 };
