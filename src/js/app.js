@@ -20,12 +20,24 @@ function calculardiarias(){
     if(costo > 0){
         //-------------- Se Crean Las Variables de Las Cuotas
         var contado = Math.ceil(costo*1.35);
-        var c20 = Math.ceil(costo*1.6/20);
-        var c40 = Math.ceil(costo*1.85/40);
-        var c60 = Math.ceil(costo*2.1/60);
-        var c80 = Math.ceil(costo*2.5/80);
-        var c100 = Math.ceil(costo*2.9/100);
-        var c150 = Math.ceil(costo*3.3/150);
+
+        var totalc20 = Math.ceil(contado*1.25);
+        var c20 = Math.ceil(totalc20/20);
+        
+        var totalc40 = Math.ceil(totalc20*1.25);
+        var c40 = Math.ceil(totalc40/40);
+        
+        var totalc60 = Math.ceil(totalc40*1.25);
+        var c60 = Math.ceil(totalc60/60);
+        
+        var totalc80 = Math.ceil(totalc60*1.25);
+        var c80 = Math.ceil(totalc80/80);
+        
+        var totalc100 = Math.ceil(totalc80*1.25);
+        var c100 = Math.ceil(totalc100/100);
+        
+        var totalc150 = Math.ceil(totalc100*1.75);
+        var c150 = Math.ceil(totalc150/150);
         //--------------
 
         //------------- Se Crea El Texto Para Mostrar En la Pagina
@@ -109,12 +121,24 @@ function calcularsemanales(){
     if(costo > 0){
         //-------------- Se Crean Las Variables de Las Cuotas
         var contado = Math.ceil(costo*1.35);
-        var s4 = Math.ceil(costo*1.6/20)*5;
-        var s8 = Math.ceil(costo*1.85/40)*5;
-        var s12 = Math.ceil(costo*2.1/60)*5;
-        var s16 = Math.ceil(costo*2.5/80)*5;
-        var s20 = Math.ceil(costo*2.9/100)*5;
-        var s30 = Math.ceil(costo*3.3/150)*5;
+
+        var totals4 = Math.ceil(contado*1.25);
+        var s4 = Math.ceil(totals4/20)*5;
+
+        var totals8 = Math.ceil(totals4*1.25);
+        var s8 = Math.ceil(totals8/40)*5;
+
+        var totals12 = Math.ceil(totals8*1.25);
+        var s12 = Math.ceil(totals12/60)*5;
+
+        var totals16 = Math.ceil(totals12*1.25);
+        var s16 = Math.ceil(totals16/80)*5;
+
+        var totals20 = Math.ceil(totals16*1.25);
+        var s20 = Math.ceil(totals20/100)*5;
+        
+        var totals30 = Math.ceil(totals20*1.25);
+        var s30 = Math.ceil(totals30/150)*5;
         //--------------
 
         //------------- Se Crea El Texto Para Mostrar En la Pagina
