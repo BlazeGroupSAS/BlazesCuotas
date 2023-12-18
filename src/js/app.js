@@ -58,8 +58,8 @@ function calculardiarias(){
             // '80 Cuotas Diarias de $'+ c80 +
             // '<br>' +
             '100 Cuotas Diarias de $'+ c100 +
-            '<br>' +
-            '150 Cuotas Diarias de $'+ c150
+            '<br>' 
+            // '150 Cuotas Diarias de $'+ c150
             ;
         }else{
             texto.innerHTML = 'Contado: $'+ contado +
@@ -86,8 +86,8 @@ function calculardiarias(){
             // '80 Cuotas Diarias de $'+ c80 +
             // '%0A' +
             '100 Cuotas Diarias de $'+ c100 +
-            '%0A' +
-            '150 Cuotas Diarias de $'+ c150
+            '%0A' 
+            // '150 Cuotas Diarias de $'+ c150
             ;
             mensaje = 'send?text=' + textoEnviar;
         }else{
@@ -159,8 +159,8 @@ function calcularsemanales(){
             // '16 Cuotas Semanales de $'+ s16 +
             // '<br>' +
             '20 Cuotas Semanales de $'+ s20 +
-            '<br>' +
-            '30 Cuotas Semanales de $'+ s30
+            '<br>'
+            // '30 Cuotas Semanales de $'+ s30
             ;
         }else{
             texto.innerHTML = 'Contado: $'+ contado +
@@ -188,8 +188,8 @@ function calcularsemanales(){
             // '16 Cuotas Semanales de $'+ s16 +
             // '%0A' +
             '20 Cuotas Semanales de $'+ s20 +
-            '%0A' +
-            '30 Cuotas Semanales de $'+ s30
+            '%0A'
+            // '30 Cuotas Semanales de $'+ s30
             ;
             mensaje = 'send?text=' + textoEnviar;
         }else{
