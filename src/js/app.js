@@ -55,8 +55,8 @@ function calculardiarias(){
             '<br>' +
             '60 Cuotas Diarias de $'+ c60 +
             '<br>' +
-            '80 Cuotas Diarias de $'+ c80 +
-            '<br>' +
+            // '80 Cuotas Diarias de $'+ c80 +
+            // '<br>' +
             '100 Cuotas Diarias de $'+ c100 +
             '<br>' +
             '150 Cuotas Diarias de $'+ c150
@@ -83,8 +83,8 @@ function calculardiarias(){
             '%0A' +
             '60 Cuotas Diarias de $'+ c60 +
             '%0A' +
-            '80 Cuotas Diarias de $'+ c80 +
-            '%0A' +
+            // '80 Cuotas Diarias de $'+ c80 +
+            // '%0A' +
             '100 Cuotas Diarias de $'+ c100 +
             '%0A' +
             '150 Cuotas Diarias de $'+ c150
@@ -156,8 +156,8 @@ function calcularsemanales(){
             '<br>' +
             '12 Cuotas Semanales de $'+ s12 +
             '<br>' +
-            '16 Cuotas Semanales de $'+ s16 +
-            '<br>' +
+            // '16 Cuotas Semanales de $'+ s16 +
+            // '<br>' +
             '20 Cuotas Semanales de $'+ s20 +
             '<br>' +
             '30 Cuotas Semanales de $'+ s30
@@ -185,8 +185,8 @@ function calcularsemanales(){
             '%0A' +
             '12 Cuotas Semanales de $'+ s12 +
             '%0A' +
-            '16 Cuotas Semanales de $'+ s16 +
-            '%0A' +
+            // '16 Cuotas Semanales de $'+ s16 +
+            // '%0A' +
             '20 Cuotas Semanales de $'+ s20 +
             '%0A' +
             '30 Cuotas Semanales de $'+ s30
