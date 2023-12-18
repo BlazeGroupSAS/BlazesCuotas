@@ -137,7 +137,7 @@ function calcularsemanales(){
         var totals20 = Math.ceil(totals16*1.25);
         var s20 = Math.ceil(totals20/100)*5;
         
-        var totals30 = Math.ceil(totals20*1.25);
+        var totals30 = Math.ceil(totals20*1.75);
         var s30 = Math.ceil(totals30/150)*5;
         //--------------
 
