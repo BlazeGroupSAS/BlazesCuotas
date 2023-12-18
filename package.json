@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "sass": "sass --watch src/scss:build/css",
-    "dev": "gulp",
-    "build": "build"
+    "dev": "gulp"
   },
   "keywords": [
     "sass",
