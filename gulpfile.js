@@ -55,4 +55,4 @@ function watchArchivos() {
 }
   
 // exports.default = parallel(css, javascript,  /*imagenes,*/  watchArchivos );
-exports.default = parallel(css, javascript,  /*imagenes,*/  );
+exports.default = parallel(css, javascript,  /*imagenes,*/ watchArchivos );
