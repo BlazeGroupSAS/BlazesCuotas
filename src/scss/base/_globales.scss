@@ -80,7 +80,7 @@ body{
             @include m.boton(v.$plata, $blaze1);
             margin-bottom: 1rem;
         }
-        .semanal{
+        .semanal, .quincenal, .mensual{
             margin-top: 1rem;
         }
     }

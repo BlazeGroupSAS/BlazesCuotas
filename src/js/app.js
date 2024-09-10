@@ -1,5 +1,7 @@
 var diario = document.querySelector(".diario");
 var semanal = document.querySelector(".semanal");
+var quincenal = document.querySelector(".quincenal");
+var mensual = document.querySelector(".mensual");
 var micheck = document.getElementById('check');
 // var nombreProducto = document.getElementById('producto').value;
 // console.log(nombreProducto);
@@ -36,6 +38,8 @@ function previewImage(event, querySelector){
 
 diario.addEventListener("click", calculardiarias);
 semanal.addEventListener('click', calcularsemanales);
+quincenal.addEventListener('click', calcularquincenales);
+mensual.addEventListener('click', calcularmensuales);
 
 function calculardiarias(){
     const listadoAnterior = document.querySelector('.listado');
@@ -254,6 +258,235 @@ function calcularsemanales(){
             '8 Cuotas Semanales de $'+ s8 +
             '%0A' +
             '12 Cuotas Semanales de $'+ s12
+            ;
+            mensaje = 'send?text=' + textoEnviar;                
+        }
+        //--------------
+
+        const botonEnviar = document.querySelector('.whatsapp');
+        botonEnviar.addEventListener('click', ()=>{
+            window.open('https://api.whatsapp.com/' + mensaje, '_blank');
+        });
+    }
+};
+
+function calcularquincenales(){
+    const listadoAnterior = document.querySelector('.listado');
+    if(listadoAnterior){
+        const mensaje = '';
+        const cuotas = document.querySelector(".cuotas");
+        cuotas.removeChild(listadoAnterior);
+    }
+    var costo = document.getElementById("costo").value;
+    var nombreProducto = document.getElementById('producto').value;
+    if(costo > 0){
+        //-------------- Se Crean Las Variables de Las Cuotas
+        var contado = Math.ceil(costo*1.35);
+
+        var totals4 = Math.ceil(contado*1.15);
+        var s4 = Math.ceil(totals4/20)*5;
+        var q2 = s4*2;
+
+        var totals8 = Math.ceil(totals4*1.15);
+        var s8 = Math.ceil(totals8/40)*5;
+        var q4 = s8*2;
+
+        var totals12 = Math.ceil(totals8*1.15);
+        var s12 = Math.ceil(totals12/60)*5;
+        var q6 = s12*2;
+
+        var totals16 = Math.ceil(totals12*1.15);
+        var s16 = Math.ceil(totals16/80)*5;
+        var q8 = s16*2;
+
+        var totals20 = Math.ceil(totals16*1.15);
+        var s20 = Math.ceil(totals20/100)*5;
+        var q10 = s20*2;
+        
+        var totals30 = Math.ceil(totals20*1.42);
+        var s30 = Math.ceil(totals30/150)*5;
+        var q15 = s30*2;
+        //--------------
+
+        //------------- Se Crea El Texto Para Mostrar En la Pagina
+        const texto = document.createElement('P');
+        texto.classList.add('listado');
+        const cuotas = document.querySelector(".cuotas");
+        cuotas.appendChild(texto);
+
+        if(micheck.checked){
+            texto.innerHTML = 'Producto: ' + nombreProducto +
+            '<br>' +
+            '<br>' +
+            'Contado: $'+ contado +
+            '<br>' +
+            '2 Cuotas Quincenales de $'+ q2 +
+            '<br>' +
+            '4 Cuotas Quincenales de $'+ q4 +
+            '<br>' +
+            '6 Cuotas Quincenales de $'+ q6 +
+            '<br>' +
+            '8 Cuotas Quincenales de $'+ q8 +
+            '<br>' +
+            '10 Cuotas Quincenales de $'+ q10 +
+            '<br>' +
+            '15 Cuotas Quincenales de $'+ q15
+            ;
+        }else{
+            texto.innerHTML = 'Producto: ' + nombreProducto +
+            '<br>' +
+            '<br>' +
+            'Contado: $'+ contado +
+            '<br>' +
+            '2 Cuotas Quincenales de $'+ q2 +
+            '<br>' +
+            '4 Cuotas Quincenales de $'+ q4 +
+            '<br>' +
+            '6 Cuotas Quincenales de $'+ q8
+            ;
+        }
+        //--------------
+
+
+        //------------- Se Crea El Mensaje Para Enviar
+        if(micheck.checked){
+            const textoEnviar = 'Producto: ' + nombreProducto +
+            '%0A' +
+            '%0A' +
+            'Contado: $'+ contado +
+            '%0A' +
+            '2 Cuotas Quincenales de $'+ q4 +
+            '%0A' +
+            '4 Cuotas Quincenales de $'+ q104 +
+            '%0A' +
+            '6 Cuotas Quincenales de $'+ q6 +
+            '%0A' +
+            '8 Cuotas Quincenales de $'+ q8 +
+            '%0A' +
+            '10 Cuotas Quincenales de $'+ q10 +
+            '%0A' +
+            '15 Cuotas Quincenales de $'+ q15
+            ;
+            mensaje = 'send?text=' + textoEnviar;
+        }else{
+            const textoEnviar = 'Producto: ' + nombreProducto +
+            '%0A' +
+            '%0A' +
+            'Contado: $'+ contado +
+            '%0A' +
+            '2 Cuotas Semanales de $'+ q2 +
+            '%0A' +
+            '4 Cuotas Semanales de $'+ q4 +
+            '%0A' +
+            '6 Cuotas Semanales de $'+ q6
+            ;
+            mensaje = 'send?text=' + textoEnviar;                
+        }
+        //--------------
+
+        const botonEnviar = document.querySelector('.whatsapp');
+        botonEnviar.addEventListener('click', ()=>{
+            window.open('https://api.whatsapp.com/' + mensaje, '_blank');
+        });
+    }
+};
+
+function calcularmensuales(){
+    const listadoAnterior = document.querySelector('.listado');
+    if(listadoAnterior){
+        const mensaje = '';
+        const cuotas = document.querySelector(".cuotas");
+        cuotas.removeChild(listadoAnterior);
+    }
+    var costo = document.getElementById("costo").value;
+    var nombreProducto = document.getElementById('producto').value;
+    if(costo > 0){
+        //-------------- Se Crean Las Variables de Las Cuotas
+        var contado = Math.ceil(costo*1.35);
+
+        var totals4 = Math.ceil(contado*1.15);
+        var m1 = totals4;
+
+        var totals8 = Math.ceil(totals4*1.15);
+        var m2 = Math.ceil(totals8/2);
+
+        var totals12 = Math.ceil(totals8*1.15);
+        var m3 = Math.ceil(totals12/3);
+
+        var totals16 = Math.ceil(totals12*1.15);
+        var m4 = Math.ceil(totals16/4);
+
+        var totals20 = Math.ceil(totals16*1.15);
+        var m5 = Math.ceil(totals20/5);
+        //--------------
+
+        //------------- Se Crea El Texto Para Mostrar En la Pagina
+        const texto = document.createElement('P');
+        texto.classList.add('listado');
+        const cuotas = document.querySelector(".cuotas");
+        cuotas.appendChild(texto);
+
+        if(micheck.checked){
+            texto.innerHTML = 'Producto: ' + nombreProducto +
+            '<br>' +
+            '<br>' +
+            'Contado: $'+ contado +
+            '<br>' +
+            '1 Cuota Mensual de $'+ m1 +
+            '<br>' +
+            '2 Cuotas Mensuales de $'+ m2 +
+            '<br>' +
+            '3 Cuotas Mensuales de $'+ m3 +
+            '<br>' +
+            '4 Cuotas Mensuales de $'+ m4 +
+            '<br>' +
+            '5 Cuotas Mensuales de $'+ m5
+            ;
+        }else{
+            texto.innerHTML = 'Producto: ' + nombreProducto +
+            '<br>' +
+            '<br>' +
+            'Contado: $'+ contado +
+            '<br>' +
+            '1 Cuota Mensual de $'+ m1 +
+            '<br>' +
+            '2 Cuotas Mensuales de $'+ m2 +
+            '<br>' +
+            '3 Cuotas Mensuales de $'+ m3
+            ;
+        }
+        //--------------
+
+
+        //------------- Se Crea El Mensaje Para Enviar
+        if(micheck.checked){
+            const textoEnviar = 'Producto: ' + nombreProducto +
+            '%0A' +
+            '%0A' +
+            'Contado: $'+ contado +
+            '%0A' +
+            '1 Cuota Mensual de $'+ m1 +
+            '%0A' +
+            '2 Cuotas Mensuales de $'+ m2 +
+            '%0A' +
+            '3 Cuotas Mensuales de $'+ m3 +
+            '%0A' +
+            '4 Cuotas Mensuales de $'+ m4 +
+            '%0A' +
+            '5 Cuotas Mensuales de $'+ m5
+            ;
+            mensaje = 'send?text=' + textoEnviar;
+        }else{
+            const textoEnviar = 'Producto: ' + nombreProducto +
+            '%0A' +
+            '%0A' +
+            'Contado: $'+ contado +
+            '%0A' +
+            '1 Cuota Mensual de $'+ m1 +
+            '%0A' +
+            '2 Cuotas Mensuales de $'+ m2 +
+            '%0A' +
+            '3 Cuotas Mensuales de $'+ m3
             ;
             mensaje = 'send?text=' + textoEnviar;                
         }
