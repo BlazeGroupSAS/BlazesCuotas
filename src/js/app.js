@@ -342,7 +342,7 @@ function calcularquincenales(){
             '<br>' +
             '4 Cuotas Quincenales de $'+ q4 +
             '<br>' +
-            '6 Cuotas Quincenales de $'+ q8
+            '6 Cuotas Quincenales de $'+ q6
             ;
         }
         //--------------
@@ -355,9 +355,9 @@ function calcularquincenales(){
             '%0A' +
             'Contado: $'+ contado +
             '%0A' +
-            '2 Cuotas Quincenales de $'+ q4 +
+            '2 Cuotas Quincenales de $'+ q2 +
             '%0A' +
-            '4 Cuotas Quincenales de $'+ q104 +
+            '4 Cuotas Quincenales de $'+ q4 +
             '%0A' +
             '6 Cuotas Quincenales de $'+ q6 +
             '%0A' +
@@ -374,11 +374,11 @@ function calcularquincenales(){
             '%0A' +
             'Contado: $'+ contado +
             '%0A' +
-            '2 Cuotas Semanales de $'+ q2 +
+            '2 Cuotas Quincenales de $'+ q2 +
             '%0A' +
-            '4 Cuotas Semanales de $'+ q4 +
+            '4 Cuotas Quincenales de $'+ q4 +
             '%0A' +
-            '6 Cuotas Semanales de $'+ q6
+            '6 Cuotas Quincenales de $'+ q6
             ;
             mensaje = 'send?text=' + textoEnviar;                
         }
