@@ -3,6 +3,10 @@ var semanal = document.querySelector(".semanal");
 var quincenal = document.querySelector(".quincenal");
 var mensual = document.querySelector(".mensual");
 var micheck = document.getElementById('check');
+
+var porcent_contado = 1.35;
+var porcent_cuotas = 1.10;
+var porcent_150 = 1.25;
 // var nombreProducto = document.getElementById('producto').value;
 // console.log(nombreProducto);
 micheck.addEventListener('click', ()=>{
@@ -52,24 +56,24 @@ function calculardiarias(){
     var nombreProducto = document.getElementById('producto').value;
     if(costo > 0){
         //-------------- Se Crean Las Variables de Las Cuotas
-        var contado = Math.ceil(costo*1.35);
+        var contado = Math.ceil(costo*porcent_contado);
 
-        var totalc20 = Math.ceil(contado*1.15);
+        var totalc20 = Math.ceil(contado*porcent_cuotas);
         var c20 = Math.ceil(totalc20/20);
         
-        var totalc40 = Math.ceil(totalc20*1.15);
+        var totalc40 = Math.ceil(totalc20*porcent_cuotas);
         var c40 = Math.ceil(totalc40/40);
         
-        var totalc60 = Math.ceil(totalc40*1.15);
+        var totalc60 = Math.ceil(totalc40*porcent_cuotas);
         var c60 = Math.ceil(totalc60/60);
         
-        var totalc80 = Math.ceil(totalc60*1.15);
+        var totalc80 = Math.ceil(totalc60*porcent_cuotas);
         var c80 = Math.ceil(totalc80/80);
         
-        var totalc100 = Math.ceil(totalc80*1.15);
+        var totalc100 = Math.ceil(totalc80*porcent_cuotas);
         var c100 = Math.ceil(totalc100/100);
         
-        var totalc150 = Math.ceil(totalc100*1.42);
+        var totalc150 = Math.ceil(totalc100*porcent_150);
         var c150 = Math.ceil(totalc150/150);
         //--------------
 
@@ -154,7 +158,6 @@ function calculardiarias(){
     }
 };
 
-
 function calcularsemanales(){
     const listadoAnterior = document.querySelector('.listado');
     if(listadoAnterior){
@@ -166,24 +169,24 @@ function calcularsemanales(){
     var nombreProducto = document.getElementById('producto').value;
     if(costo > 0){
         //-------------- Se Crean Las Variables de Las Cuotas
-        var contado = Math.ceil(costo*1.35);
+        var contado = Math.ceil(costo*porcent_contado);
 
-        var totals4 = Math.ceil(contado*1.15);
+        var totals4 = Math.ceil(contado*porcent_cuotas);
         var s4 = Math.ceil(totals4/20)*5;
 
-        var totals8 = Math.ceil(totals4*1.15);
+        var totals8 = Math.ceil(totals4*porcent_cuotas);
         var s8 = Math.ceil(totals8/40)*5;
 
-        var totals12 = Math.ceil(totals8*1.15);
+        var totals12 = Math.ceil(totals8*porcent_cuotas);
         var s12 = Math.ceil(totals12/60)*5;
 
-        var totals16 = Math.ceil(totals12*1.15);
+        var totals16 = Math.ceil(totals12*porcent_cuotas);
         var s16 = Math.ceil(totals16/80)*5;
 
-        var totals20 = Math.ceil(totals16*1.15);
+        var totals20 = Math.ceil(totals16*porcent_cuotas);
         var s20 = Math.ceil(totals20/100)*5;
         
-        var totals30 = Math.ceil(totals20*1.42);
+        var totals30 = Math.ceil(totals20*porcent_150);
         var s30 = Math.ceil(totals30/150)*5;
         //--------------
 
@@ -281,29 +284,29 @@ function calcularquincenales(){
     var nombreProducto = document.getElementById('producto').value;
     if(costo > 0){
         //-------------- Se Crean Las Variables de Las Cuotas
-        var contado = Math.ceil(costo*1.35);
+        var contado = Math.ceil(costo*porcent_contado);
 
-        var totals4 = Math.ceil(contado*1.15);
+        var totals4 = Math.ceil(contado*porcent_cuotas);
         var s4 = Math.ceil(totals4/20)*5;
         var q2 = s4*2;
 
-        var totals8 = Math.ceil(totals4*1.15);
+        var totals8 = Math.ceil(totals4*porcent_cuotas);
         var s8 = Math.ceil(totals8/40)*5;
         var q4 = s8*2;
 
-        var totals12 = Math.ceil(totals8*1.15);
+        var totals12 = Math.ceil(totals8*porcent_cuotas);
         var s12 = Math.ceil(totals12/60)*5;
         var q6 = s12*2;
 
-        var totals16 = Math.ceil(totals12*1.15);
+        var totals16 = Math.ceil(totals12*porcent_cuotas);
         var s16 = Math.ceil(totals16/80)*5;
         var q8 = s16*2;
 
-        var totals20 = Math.ceil(totals16*1.15);
+        var totals20 = Math.ceil(totals16*porcent_cuotas);
         var s20 = Math.ceil(totals20/100)*5;
         var q10 = s20*2;
         
-        var totals30 = Math.ceil(totals20*1.42);
+        var totals30 = Math.ceil(totals20*porcent_150);
         var s30 = Math.ceil(totals30/150)*5;
         var q15 = s30*2;
         //--------------
@@ -402,21 +405,21 @@ function calcularmensuales(){
     var nombreProducto = document.getElementById('producto').value;
     if(costo > 0){
         //-------------- Se Crean Las Variables de Las Cuotas
-        var contado = Math.ceil(costo*1.35);
+        var contado = Math.ceil(costo*porcent_contado);
 
-        var totals4 = Math.ceil(contado*1.15);
+        var totals4 = Math.ceil(contado*porcent_cuotas);
         var m1 = totals4;
 
-        var totals8 = Math.ceil(totals4*1.15);
+        var totals8 = Math.ceil(totals4*porcent_cuotas);
         var m2 = Math.ceil(totals8/2);
 
-        var totals12 = Math.ceil(totals8*1.15);
+        var totals12 = Math.ceil(totals8*porcent_cuotas);
         var m3 = Math.ceil(totals12/3);
 
-        var totals16 = Math.ceil(totals12*1.15);
+        var totals16 = Math.ceil(totals12*porcent_cuotas);
         var m4 = Math.ceil(totals16/4);
 
-        var totals20 = Math.ceil(totals16*1.15);
+        var totals20 = Math.ceil(totals16*porcent_cuotas);
         var m5 = Math.ceil(totals20/5);
         //--------------
 
@@ -432,8 +435,8 @@ function calcularmensuales(){
             '<br>' +
             'Contado: $'+ contado +
             '<br>' +
-            '1 Cuota Mensual de $'+ m1 +
-            '<br>' +
+            // '1 Cuota Mensual de $'+ m1 +
+            // '<br>' +
             '2 Cuotas Mensuales de $'+ m2 +
             '<br>' +
             '3 Cuotas Mensuales de $'+ m3 +
@@ -448,8 +451,8 @@ function calcularmensuales(){
             '<br>' +
             'Contado: $'+ contado +
             '<br>' +
-            '1 Cuota Mensual de $'+ m1 +
-            '<br>' +
+            // '1 Cuota Mensual de $'+ m1 +
+            // '<br>' +
             '2 Cuotas Mensuales de $'+ m2 +
             '<br>' +
             '3 Cuotas Mensuales de $'+ m3
@@ -465,8 +468,8 @@ function calcularmensuales(){
             '%0A' +
             'Contado: $'+ contado +
             '%0A' +
-            '1 Cuota Mensual de $'+ m1 +
-            '%0A' +
+            // '1 Cuota Mensual de $'+ m1 +
+            // '%0A' +
             '2 Cuotas Mensuales de $'+ m2 +
             '%0A' +
             '3 Cuotas Mensuales de $'+ m3 +
@@ -482,8 +485,8 @@ function calcularmensuales(){
             '%0A' +
             'Contado: $'+ contado +
             '%0A' +
-            '1 Cuota Mensual de $'+ m1 +
-            '%0A' +
+            // '1 Cuota Mensual de $'+ m1 +
+            // '%0A' +
             '2 Cuotas Mensuales de $'+ m2 +
             '%0A' +
             '3 Cuotas Mensuales de $'+ m3
