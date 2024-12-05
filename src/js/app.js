@@ -4,7 +4,7 @@ var quincenal = document.querySelector(".quincenal");
 var mensual = document.querySelector(".mensual");
 var micheck = document.getElementById('check');
 
-var porcent_contado = 1.35;
+var porcent_contado = 1.5;
 var porcent_cuotas = 1.10;
 var porcent_150 = 1.25;
 // var nombreProducto = document.getElementById('producto').value;
