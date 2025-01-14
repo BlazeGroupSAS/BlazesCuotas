@@ -669,9 +669,7 @@ function promoBNA(){
         // Enviar mensaje por WhatsApp
         const botonEnviar = document.querySelector('.whatsapp');
         botonEnviar.addEventListener('click', () => {
-            // const url = `whatsapp://send?text=${encodeURIComponent(textoEnviar)}`;
-            // window.location.href = url;
-            window.location.href = 'whatsapp://send?text=' + textoEnviar;
+            window.location.href = 'https://api.whatsapp.com/send?text=' + textoEnviar;
         });
     }
 }
@@ -730,7 +728,7 @@ function generarMensaje(tipo, nombreProducto, contado, cuotas) {
     for (let cuota in cuotas) {
         // Cortamos la letra correspondiente de la cuota y la formateamos
         let cuotaTexto = cuota.slice(1).toUpperCase().replace(/_/g, ' ');
-        mensaje += `${numeroCuotas} cuotas ${tipo} de $${cuotas[cuota]}%0A`;
+        mensaje += `${cuotaTexto} cuotas ${tipo} de $${cuotas[cuota]}%0A`;
         // mensaje += `${cuotaTexto} de $${cuotas[cuota]}%0A`;
     }
 
