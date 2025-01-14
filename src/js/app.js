@@ -642,10 +642,10 @@ function promoBNA(){
     const nombreProducto = document.getElementById('producto').value;
     if (costo > 0) {
         const contado = Math.ceil(costo * porcent_contado);
-        const monto = contado * porcent_cuotas * porcent_cuotas;
+        const monto = Math.ceil(Math.ceil(contado * porcent_cuotas * porcent_cuotas));
         const cuotasPromo = 12;
-        const montoCuotasPromo = monto/cuotasPromo;
-        const reintegro = contado * 15/100;
+        const montoCuotasPromo = Math.ceil(Math.ceil(monto/cuotasPromo));
+        const reintegro = Math.ceil(Math.ceil(contado * 15/100));
 
         // Crear y mostrar el texto
         const texto = document.createElement('P');

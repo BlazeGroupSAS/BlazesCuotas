@@ -1,5 +1,5 @@
-@use "base/mixins" as m;
 @use "base/variables" as v;
+@use "base/mixins" as m;
 
 html {
     font-size: 62.5%;
@@ -82,9 +82,12 @@ body{
     
     .botones{
         width: 90%;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
+        @include m.minicel{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
         input{
             @include m.boton(v.$plata, $blaze1);
             margin-bottom: 1rem;

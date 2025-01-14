@@ -2,20 +2,25 @@
 @use "base/variables" as v;
 
 /** Media Queries **/
+@mixin minicel {
+    @media (min-width: #{v.$minicel}) {
+        @content;
+    }
+}
 @mixin telefono {
-    @media (min-width: #{$telefono}) {
+    @media (min-width: #{v.$telefono}) {
         @content;
     }
 }
 
 @mixin tablet {
-    @media (min-width: #{$tablet}) {
+    @media (min-width: #{v.$tablet}) {
         @content;
     }
 }
   
 @mixin desktop {
-    @media (min-width: #{$desktop}) {
+    @media (min-width: #{v.$desktop}) {
         @content;
     }
 }
@@ -30,9 +35,9 @@
     text-decoration: none;
     color: $color;
     text-transform: uppercase;
-    font-size: 2rem;
+    // font-size: 2rem;
     font-weight: v.$black;
-    padding: 1rem 3rem;
+    padding: 1rem 1rem;
     width: 100%;
     text-align: center;
     border-radius: 1rem;
