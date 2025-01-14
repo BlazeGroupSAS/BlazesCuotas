@@ -24,30 +24,28 @@
 <body>
     <div class="titulos">
         <h1>Blaze's Market</h1>
-        <h2>Generador de Cuotas</h1>
+        <h2>Generador de Cuotas</h2>
     </div>
 
     
     <div class="contenedor sombra">
-    <!------------- SELECCIONAR IMAGEN  ---------------->
-        <!-- <img id="imgPreview" class="imgPreview">
-        <input id="file" type="file" accept="image/*" capture="camera" onchange="previewImage(event, '#imgPreview')"> -->
-    <!------------- SELECCIONAR IMAGEN  ---------------->
 
         <div class="costos nombre_producto">
             <label for="producto">Producto:</label>
             <input type="text" name="producto" id="producto" value="">
         </div>
-        <!-- <form action=""> -->
-            <div class="costos">
-                <label for="costo">Ingrese El Monto:</label>
-                <input
-                    type="number"
-                    name="costo"
-                    id="costo"
-                    placeholder=$
-                />
-            </div>
+
+        <div class="costos">
+            <label for="costo">Ingrese El Monto:</label>
+            <input
+                type="number"
+                name="costo"
+                id="costo"
+                placeholder=$
+            />
+        </div>
+
+        <div class="contenedor-check">                
             <div class="check">
                 <input
                 type="checkbox"
@@ -56,29 +54,40 @@
                 id="check"
                 /><label for="check" class="labelcheck">Listado Completo</label>
             </div>
-            <div class="botones">
-                <input 
-                    type="button"
-                    class="boton diario sombra"
-                    value="Diario"
-                />
-                <input 
-                    type="button"
-                    class="boton semanal sombra"
-                    value="Semanal"
-                />
-                <input 
-                    type="button"
-                    class="boton quincenal sombra"
-                    value="Quincenal"
-                />
-                <input 
-                    type="button"
-                    class="boton mensual sombra"
-                    value="Mensual"
-                />
-            </div>
+        </div>
+        <div class="promos botones">
+            <input 
+                type="button"
+                id="bna"
+                class="boton BNA sombra"
+                value="Promo BNA Modo"
+            />
+        </div>
+        <div class="botones">
+            <input 
+                type="button"
+                class="boton diario sombra"
+                value="Diario"
+            />
+            <input 
+                type="button"
+                class="boton semanal sombra"
+                value="Semanal"
+            />
+            <input 
+                type="button"
+                class="boton quincenal sombra"
+                value="Quincenal"
+            />
+            <input 
+                type="button"
+                class="boton mensual sombra"
+                value="Mensual"
+            />
+        </div>
+        
         <!-- </form> -->
+
     </div>
 
     <div class="contenedor cuotas">

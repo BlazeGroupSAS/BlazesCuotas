@@ -29,6 +29,11 @@ body{
     justify-content: center;
     margin-bottom: 2.5rem;
 
+    .contenedor-check{
+        display: flex;
+        gap: 4rem;
+    }
+
     .costos{
         max-width: 95%;
         display: flex;
@@ -74,15 +79,20 @@ body{
         }
 
     }
-
+    
     .botones{
+        width: 90%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
         input{
             @include m.boton(v.$plata, $blaze1);
             margin-bottom: 1rem;
         }
-        .semanal, .quincenal, .mensual{
-            margin-top: 1rem;
-        }
+    }
+    .promos{
+        display: block;
+        max-width: 60%;
     }
 }
 
