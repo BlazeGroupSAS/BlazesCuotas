@@ -669,9 +669,9 @@ function promoBNA(){
         // Enviar mensaje por WhatsApp
         const botonEnviar = document.querySelector('.whatsapp');
         botonEnviar.addEventListener('click', () => {
-            const url = `whatsapp://send?text=${encodeURIComponent(textoEnviar)}`;
-            window.location.href = url;
-            // window.location.href = 'https://api.whatsapp.com/send?text=' + textoEnviar;
+            // const url = `whatsapp://send?text=${encodeURIComponent(textoEnviar)}`;
+            // window.location.href = url;
+            window.location.href = 'whatsapp://send?text=' + textoEnviar;
         });
     }
 }
