@@ -16,6 +16,7 @@ body{
     // font-family: $fuente_secundario, cursive;
     // background-image: linear-gradient(45grad, $blaze2 40%, $blaze1 85%);
     background: radial-gradient(circle, $blaze1 50%, $blaze2 100%);
+    // background-color: v.$blaze2;
 }
 
 .contenedor {
@@ -28,6 +29,7 @@ body{
     align-items: center;
     justify-content: center;
     margin-bottom: 2.5rem;
+    // background-color: v.$blaze2;
 
     .contenedor-check{
         display: flex;
@@ -46,11 +48,12 @@ body{
             margin-bottom: 1rem;
         }
         input{
-            background-color: transparent;
+            // background-color: transparent;
+            background-color: v.$blanco;
             border-radius: 1rem;
             padding: 0.5rem;
             text-align: center;
-            color: v.$primario;
+            color: v.$blaze2;
             font-weight: v.$bold;
             font-size: 2rem;
         }
@@ -89,7 +92,7 @@ body{
         }
 
         input{
-            @include m.boton(v.$plata, $blaze1);
+            @include m.boton(v.$blaze2, $blaze1);
             margin-bottom: 1rem;
         }
     }
@@ -100,13 +103,14 @@ body{
 }
 
 .cuotas{
+    background-color: transparent;
     font-size: 2rem;
     margin-top: 2.5rem;
     color: lighten(v.$plata, 10%);
 }
 .whatsapp{
     display: block;
-    @include m.boton(v.$iconos, v.$blaze2);
+    @include m.boton(v.$blaze2, v.$blaze1);
     max-width: 95%;
     font-size: 2.4rem;
     padding: 0.5rem;

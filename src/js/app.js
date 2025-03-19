@@ -488,7 +488,7 @@
 //-------------------CHAT GPT
 
 // Variables globales
-var bna = document.querySelector("#bna");
+// var bna = document.querySelector("#bna");
 var diario = document.querySelector(".diario");
 var semanal = document.querySelector(".semanal");
 var quincenal = document.querySelector(".quincenal");
@@ -501,7 +501,7 @@ const porcent_cuotas = 1.10;
 const porcent_150 = 1.25;
 
 // Event listeners
-bna.addEventListener('click', () => promoBNA());
+// bna.addEventListener('click', () => promoBNA());
 micheck.addEventListener('click', () => {});
 
 diario.addEventListener("click", () => calcularCuotas('diarias'));
@@ -538,7 +538,9 @@ function calcularCuotas(tipo) {
         // Enviar mensaje por WhatsApp
         const botonEnviar = document.querySelector('.whatsapp');
         botonEnviar.addEventListener('click', () => {
-            window.location.href = 'https://api.whatsapp.com/send?text=' + mensaje;
+            // window.location.href = 'https://api.whatsapp.com/send?text=' + mensaje;
+            window.location.href = `https://wa.me/?text=${mensaje}`;
+
         });
     }
 }
