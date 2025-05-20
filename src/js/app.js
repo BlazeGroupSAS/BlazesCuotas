@@ -501,7 +501,7 @@ const porcent_cuotas = 1.10;
 const porcent_150 = 1.25;
 
 // Event listeners
-// bna.addEventListener('click', () => promoBNA());
+bna.addEventListener('click', () => promoBNA());
 micheck.addEventListener('click', () => {});
 
 diario.addEventListener("click", () => calcularCuotas('diarias'));
