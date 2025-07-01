@@ -265,7 +265,8 @@ var bna = document.querySelector("#bna");
 let mensajeWhatsApp = '';
 
 // Porcentajes
-const porcent_contado = 1.4;
+// const porcent_contado = 1.4; // Día del Padre 2025
+const porcent_contado = 1.5;
 const porcent_cuotas = 1.10;
 const porcent_150 = 1.25;
 
