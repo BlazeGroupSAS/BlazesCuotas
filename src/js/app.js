@@ -210,7 +210,7 @@ var bna = document.querySelector("#bna");
 let mensajeWhatsApp = '';
 
 // Porcentajes
-const porcent_contado = 1.5; // Precio contado = costo * 1.5
+const porcent_contado = 1.55; // Precio contado = costo * 1.5
 const interes_mensual = 1.10; // 10% por mes (interés compuesto)
 
 // Event listeners
