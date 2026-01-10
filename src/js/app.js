@@ -204,7 +204,7 @@ var semanal = document.querySelector(".semanal");
 var quincenal = document.querySelector(".quincenal");
 var mensual = document.querySelector(".mensual");
 var micheck = document.getElementById('check'); // Ya no se usa, pero lo dejo si el HTML lo tiene
-var bna = document.querySelector("#bna");
+// var bna = document.querySelector("#bna");
 
 // Variable global del mensaje WhatsApp
 let mensajeWhatsApp = '';
@@ -215,7 +215,7 @@ const porcent_contado = 1.7; // Precio contado = costo * 1.5
 const interes_mensual = 1.10; // 10% por mes (interés compuesto)
 
 // Event listeners
-bna.addEventListener('click', () => promoBNA());
+// bna.addEventListener('click', () => promoBNA());
 diario.addEventListener("click", () => calcularCuotas('diarias'));
 semanal.addEventListener('click', () => calcularCuotas('semanales'));
 quincenal.addEventListener('click', () => calcularCuotas('quincenales'));
@@ -301,39 +301,40 @@ function calcularValores(tipo, contado) {
 }
 
 // Promo BNA (mantiene la lógica original)
-function promoBNA() {
-    const listadoAnterior = document.querySelector('.listado');
-    if (listadoAnterior) listadoAnterior.remove();
+// function promoBNA() {
+//     const listadoAnterior = document.querySelector('.listado');
+//     if (listadoAnterior) listadoAnterior.remove();
 
-    const costo = document.getElementById("costo").value;
-    const nombreProducto = document.getElementById('producto').value;
+//     const costo = document.getElementById("costo").value;
+//     const nombreProducto = document.getElementById('producto').value;
 
-    if (costo > 0) {
-        const contado = Math.ceil(costo * porcent_contado);
-        const monto = Math.ceil(contado * interes_mensual ** 2);
-        const cuotasPromo = 12;
-        const montoCuotasPromo = Math.ceil(monto / cuotasPromo);
-        const reintegro = Math.ceil(contado * 15 / 100);
+//     if (costo > 0) {
+//         const contado = Math.ceil(costo * porcent_contado);
+//         const monto = Math.ceil(contado * interes_mensual ** 2);
+//         const cuotasPromo = 12;
+//         const montoCuotasPromo = Math.ceil(monto / cuotasPromo);
+//         const reintegro = Math.ceil(contado * 15 / 100);
 
-        const texto = document.createElement('P');
-        texto.classList.add('listado');
-        const cuotasElement = document.querySelector(".cuotas");
-        cuotasElement.appendChild(texto);
+//         const texto = document.createElement('P');
+//         texto.classList.add('listado');
+//         const cuotasElement = document.querySelector(".cuotas");
+//         cuotasElement.appendChild(texto);
 
-        const textoMostrar = `
-            Producto: ${nombreProducto}<br><br>
-            Monto: $${monto}<br>
-            ${cuotasPromo} cuotas mensuales de $${montoCuotasPromo}<br>
-            $${reintegro} de Reintegro!<br>
-        `;
-        texto.innerHTML = textoMostrar;
+//         const textoMostrar = `
+//             Producto: ${nombreProducto}<br><br>
+//             Monto: $${monto}<br>
+//             ${cuotasPromo} cuotas mensuales de $${montoCuotasPromo}<br>
+//             $${reintegro} de Reintegro!<br>
+//         `;
+//         texto.innerHTML = textoMostrar;
 
-        mensajeWhatsApp = `Producto: ${nombreProducto}%0A%0AMonto: $${monto}%0A${cuotasPromo} cuotas mensuales de $${montoCuotasPromo}%0A$${reintegro} de Reintegro!%0A`;
-    }
-}
+//         mensajeWhatsApp = `Producto: ${nombreProducto}%0A%0AMonto: $${monto}%0A${cuotasPromo} cuotas mensuales de $${montoCuotasPromo}%0A$${reintegro} de Reintegro!%0A`;
+//     }
+// }
 
 function generarTexto(tipo, nombreProducto, contado, cuotas) {
-    let texto = `Producto: ${nombreProducto}<br><br>Contado: $${contado}<br>`;
+    // let texto = `Producto: ${nombreProducto}<br><br>Contado: $${contado}<br>`;
+    let texto = `Producto: ${nombreProducto}<br>`;
     const letraTipo = tipo[0];
     for (let cuota in cuotas) {
         let numeroCuotas = cuota.replace(letraTipo, '');
@@ -343,7 +344,7 @@ function generarTexto(tipo, nombreProducto, contado, cuotas) {
 }
 
 function generarMensaje(tipo, nombreProducto, contado, cuotas) {
-    let mensaje = `Producto: ${nombreProducto}%0A%0AContado: $${contado}%0A`;
+    let mensaje = `Producto: ${nombreProducto}%0A`;
     const letra = tipo[0];
     for (let cuota in cuotas) {
         let cuotaTexto = cuota.slice(1).toUpperCase().replace(/_/g, ' ');
