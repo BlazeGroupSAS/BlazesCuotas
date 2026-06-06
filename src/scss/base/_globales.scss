@@ -96,6 +96,10 @@ body{
             margin-bottom: 1rem;
         }
     }
+    .boton.deshabilitado {
+        opacity: .45;
+        cursor: not-allowed;
+    }
     .promos{
         display: block;
         max-width: 60%;
