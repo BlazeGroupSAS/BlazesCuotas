@@ -4,7 +4,7 @@ var semanal = document.querySelector(".semanal");
 var quincenal = document.querySelector(".quincenal");
 var mensual = document.querySelector(".mensual");
 var micheck = document.getElementById('check'); // Ya no se usa, pero lo dejo si el HTML lo tiene
-// var bna = document.querySelector("#bna");
+var bna = document.querySelector("#bna");
 
 document.querySelectorAll('input[name="estrategia"]').forEach(function(radio) {
     radio.addEventListener('change', actualizarBotonesPorEstrategia);
@@ -15,16 +15,33 @@ actualizarBotonesPorEstrategia();
 // Variable global del mensaje WhatsApp
 let mensajeWhatsApp = '';
 
+// Coeficientes nuevos
+const COEFICIENTES_FINANCIACION = {
+    0: 1.500000,
+    1: 1.150000,
+    2: 1.145000,
+    3: 1.140000,
+    4: 1.135000,
+    5: 1.130000,
+    6: 1.125000,
+    7: 1.120000,
+    7.5: 1.117500,
+    8: 1.115000,
+    9: 1.110000,
+    10: 1.105000,
+    11: 1.100000,
+    12: 1.095000
+};
+
 // Porcentajes
-// const porcent_contado = 1.6; // Precio contado = costo * 1.5
-const porcent_contado = 1.7; // Precio contado = costo * 1.5
-const PORCENT_CONTADO_NORMAL = 1.7;
+const porcent_contado = COEFICIENTES_FINANCIACION[0]; // Precio contado = costo * 1.5
+const PORCENT_CONTADO_NORMAL = COEFICIENTES_FINANCIACION[0];
 const PORCENT_CONTADO_DORADA = 1.3;
-const interes_mensual = 1.10; // 10% por mes (interés compuesto)
+const interes_mensual = 1.10; // Ya no se usa para planes normales, queda por compatibilidad
 
 
 // Event listeners
-// bna.addEventListener('click', () => promoBNA());
+bna.addEventListener('click', () => promoBNA());
 diario.addEventListener("click", () => calcularCuotas('diarias'));
 semanal.addEventListener('click', () => calcularCuotas('semanales'));
 quincenal.addEventListener('click', () => calcularCuotas('quincenales'));
@@ -40,9 +57,7 @@ botonEnviar.addEventListener('click', () => {
     }
 });
 
-// function obtenerEstrategiaSeleccionada() {
-//     return document.querySelector('input[name="estrategia"]:checked')?.value || 'normal';
-// }
+
 function obtenerEstrategiaSeleccionada() {
     const estrategiaSeleccionada = document.querySelector('input[name="estrategia"]:checked');
 
@@ -63,9 +78,33 @@ function obtenerCoeficienteContado() {
     return PORCENT_CONTADO_NORMAL;
 }
 
+function obtenerCoeficienteFinanciacion(meses) {
+    const coeficiente = COEFICIENTES_FINANCIACION[meses];
+
+    if (!coeficiente) {
+        console.error(`No existe coeficiente de financiación para ${meses} meses.`);
+        return null;
+    }
+
+    return coeficiente;
+}
+
+function calcularTotalFinanciado(contado, meses) {
+    const coeficienteFinanciacion = obtenerCoeficienteFinanciacion(meses);
+
+    if (!coeficienteFinanciacion) {
+        return null;
+    }
+
+    return contado * Math.pow(coeficienteFinanciacion, meses);
+}
+
 function calcularFinanciacionExtendida(contado) {
-    const cuotaAntes = Math.ceil((contado * Math.pow(interes_mensual, 7.5)) / 30);
-    const cuotaAhora = Math.ceil((contado * Math.pow(interes_mensual, 5)) / 30);
+    const totalAntes = calcularTotalFinanciado(contado, 7.5);
+    const totalAhora = calcularTotalFinanciado(contado, 5);
+
+    const cuotaAntes = Math.ceil(totalAntes / 30);
+    const cuotaAhora = Math.ceil(totalAhora / 30);
 
     return {
         cuotaAntes,
@@ -130,7 +169,12 @@ function calcularValores(tipo, contado) {
         const opciones = micheck.checked ? [20, 40, 60, 80, 100, 150] : [20, 40, 60];
         opciones.forEach(cuotas => {
             const meses = cuotas / 20; // 20 días hábiles ≈ 1 mes
-            const total = contado * Math.pow(interes_mensual, meses);
+            const total = calcularTotalFinanciado(contado, meses);
+
+            if (total === null) {
+                return;
+            }
+
             planes[`c${cuotas}`] = Math.ceil(total / cuotas);
         });
     }
@@ -139,7 +183,12 @@ function calcularValores(tipo, contado) {
         const opciones = micheck.checked ? [4, 8, 12, 16, 20, 30] : [4, 8, 12];
         opciones.forEach(cuotas => {
             const meses = cuotas / 4; // 4 semanas ≈ 1 mes
-            const total = contado * Math.pow(interes_mensual, meses);
+            const total = calcularTotalFinanciado(contado, meses);
+
+            if (total === null) {
+                return;
+            }
+
             planes[`s${cuotas}`] = Math.ceil(total / cuotas);
         });
     }
@@ -148,16 +197,35 @@ function calcularValores(tipo, contado) {
         const opciones = micheck.checked ? [2, 4, 6, 8, 10, 15] : [2, 4, 6];
         opciones.forEach(cuotas => {
             const meses = cuotas / 2; // 2 quincenas = 1 mes
-            const total = contado * Math.pow(interes_mensual, meses);
+            const total = calcularTotalFinanciado(contado, meses);
+
+            if (total === null) {
+                return;
+            }
+
             planes[`q${cuotas}`] = Math.ceil(total / cuotas);
         });
     }
 
     if (tipo === 'mensuales') {
-        const opciones = micheck.checked ? [2, 3, 4, 5] : [2, 3];
+        let opciones = [2, 3];
+
+        if (micheck.checked) {
+            opciones = [2, 3, 4, 5, 6, 7, 8, 9];
+        }
+
+        if (micheck.checked && check12.checked) {
+            opciones = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+        }
+
         opciones.forEach(cuotas => {
             const meses = cuotas; // mensual = 1 cuota por mes
-            const total = contado * Math.pow(interes_mensual, meses);
+            const total = calcularTotalFinanciado(contado, meses);
+
+            if (total === null) {
+                return;
+            }
+
             planes[`m${cuotas}`] = Math.ceil(total / cuotas);
         });
     }
@@ -166,36 +234,33 @@ function calcularValores(tipo, contado) {
 }
 
 // Promo BNA (mantiene la lógica original)
-// function promoBNA() {
-//     const listadoAnterior = document.querySelector('.listado');
-//     if (listadoAnterior) listadoAnterior.remove();
+function promoBNA() {
+    const listadoAnterior = document.querySelector('.listado');
+    if (listadoAnterior) listadoAnterior.remove();
 
-//     const costo = document.getElementById("costo").value;
-//     const nombreProducto = document.getElementById('producto').value;
+    const costo = document.getElementById("costo").value;
+    const nombreProducto = document.getElementById('producto').value;
 
-//     if (costo > 0) {
-//         const contado = Math.ceil(costo * porcent_contado);
-//         const monto = Math.ceil(contado * interes_mensual ** 2);
-//         const cuotasPromo = 12;
-//         const montoCuotasPromo = Math.ceil(monto / cuotasPromo);
-//         const reintegro = Math.ceil(contado * 15 / 100);
+    if (costo > 0) {
+        const monto = Math.ceil(costo * 1.7);
+        const cuotasPromo = 12;
+        const montoCuotasPromo = Math.ceil(monto / cuotasPromo);
 
-//         const texto = document.createElement('P');
-//         texto.classList.add('listado');
-//         const cuotasElement = document.querySelector(".cuotas");
-//         cuotasElement.appendChild(texto);
+        const texto = document.createElement('P');
+        texto.classList.add('listado');
+        const cuotasElement = document.querySelector(".cuotas");
+        cuotasElement.appendChild(texto);
 
-//         const textoMostrar = `
-//             Producto: ${nombreProducto}<br><br>
-//             Monto: $${monto}<br>
-//             ${cuotasPromo} cuotas mensuales de $${montoCuotasPromo}<br>
-//             $${reintegro} de Reintegro!<br>
-//         `;
-//         texto.innerHTML = textoMostrar;
+        const textoMostrar = `
+            Producto: ${nombreProducto}<br><br>
+            Precio tarjeta: $${monto}<br>
+            ${cuotasPromo} cuotas mensuales de $${montoCuotasPromo}<br>
+        `;
+        texto.innerHTML = textoMostrar;
 
-//         mensajeWhatsApp = `Producto: ${nombreProducto}%0A%0AMonto: $${monto}%0A${cuotasPromo} cuotas mensuales de $${montoCuotasPromo}%0A$${reintegro} de Reintegro!%0A`;
-//     }
-// }
+        mensajeWhatsApp = `Producto: ${nombreProducto}%0A%0APrecio tarjeta: $${monto}%0A${cuotasPromo} cuotas mensuales de $${montoCuotasPromo}%0A`;
+    }
+}
 
 function generarTexto(tipo, nombreProducto, contado, cuotas) {
     // let texto = `Producto: ${nombreProducto}<br><br>Contado: $${contado}<br>`;
