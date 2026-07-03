@@ -166,7 +166,16 @@ function calcularValores(tipo, contado) {
     let planes = {};
 
     if (tipo === 'diarias') {
-        const opciones = micheck.checked ? [20, 40, 60, 80, 100, 150] : [20, 40, 60];
+        let opciones = [20, 40, 60]; // 1, 2 y 3 meses
+
+        if (micheck.checked) {
+            opciones = [20, 40, 60, 80, 100, 120, 140, 150, 160, 180]; // hasta 9 meses, incluye 7.5
+        }
+
+        if (micheck.checked && check12.checked) {
+            opciones = [20, 40, 60, 80, 100, 120, 140, 150, 160, 180, 200, 220, 240]; // hasta 12 meses
+        }
+
         opciones.forEach(cuotas => {
             const meses = cuotas / 20; // 20 días hábiles ≈ 1 mes
             const total = calcularTotalFinanciado(contado, meses);
@@ -180,7 +189,16 @@ function calcularValores(tipo, contado) {
     }
 
     if (tipo === 'semanales') {
-        const opciones = micheck.checked ? [4, 8, 12, 16, 20, 30] : [4, 8, 12];
+        let opciones = [4, 8, 12]; // 1, 2 y 3 meses
+
+        if (micheck.checked) {
+            opciones = [4, 8, 12, 16, 20, 24, 28, 30, 32, 36]; // hasta 9 meses, incluye 7.5
+        }
+
+        if (micheck.checked && check12.checked) {
+            opciones = [4, 8, 12, 16, 20, 24, 28, 30, 32, 36, 40, 44, 48]; // hasta 12 meses
+        }
+
         opciones.forEach(cuotas => {
             const meses = cuotas / 4; // 4 semanas ≈ 1 mes
             const total = calcularTotalFinanciado(contado, meses);
@@ -194,7 +212,16 @@ function calcularValores(tipo, contado) {
     }
 
     if (tipo === 'quincenales') {
-        const opciones = micheck.checked ? [2, 4, 6, 8, 10, 15] : [2, 4, 6];
+        let opciones = [2, 4, 6]; // 1, 2 y 3 meses
+
+        if (micheck.checked) {
+            opciones = [2, 4, 6, 8, 10, 12, 14, 15, 16, 18]; // hasta 9 meses, incluye 7.5
+        }
+
+        if (micheck.checked && check12.checked) {
+            opciones = [2, 4, 6, 8, 10, 12, 14, 15, 16, 18, 20, 22, 24]; // hasta 12 meses
+        }
+
         opciones.forEach(cuotas => {
             const meses = cuotas / 2; // 2 quincenas = 1 mes
             const total = calcularTotalFinanciado(contado, meses);
@@ -208,7 +235,7 @@ function calcularValores(tipo, contado) {
     }
 
     if (tipo === 'mensuales') {
-        let opciones = [2, 3];
+        let opciones = [2, 3]; // se mantiene como venía: normal mensual muestra 2 y 3
 
         if (micheck.checked) {
             opciones = [2, 3, 4, 5, 6, 7, 8, 9];
